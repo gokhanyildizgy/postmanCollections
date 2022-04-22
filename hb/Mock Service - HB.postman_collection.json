@@ -1,0 +1,192 @@
+{
+	"info": {
+		"_postman_id": "1cb97797-1fca-4b6f-9c6d-05f008395a65",
+		"name": "Mock Service - HB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Grocery",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body Not Null Test\", function () {",
+							"    pm.expect(pm.response.text()).not.equal(null);",
+							"});",
+							"",
+							"pm.test(\"Response Valid and Have a Body\", function () {",
+							"     pm.response.to.be.ok;",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json;",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"apple\");",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"pm.test(\"Check Parameter Values\", () => {",
+							"  const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.data[0].id).to.eql(1);",
+							"    pm.expect(responseJson.data[0].name).to.eql(\"apple\");",
+							"    pm.expect(responseJson.data[0].price).to.eql(3);",
+							"    pm.expect(responseJson.data[0].stock).to.eql(100);",
+							"",
+							"    pm.expect(responseJson.data[1].id).to.eql(2);",
+							"    pm.expect(responseJson.data[1].name).to.eql(\"grapes\");",
+							"    pm.expect(responseJson.data[1].price).to.eql(5);",
+							"    pm.expect(responseJson.data[1].stock).to.eql(50);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://demo1151594.mockable.io/allGrocery",
+					"protocol": "https",
+					"host": [
+						"demo1151594",
+						"mockable",
+						"io"
+					],
+					"path": [
+						"allGrocery"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Apples",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body Not Null Test\", function () {",
+							"    pm.expect(pm.response.text()).not.equal(null);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"apple\");",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"pm.test(\"Check Parameter Values\", () => {",
+							"  const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.id).to.eql(1);",
+							"    pm.expect(responseJson.name).to.eql(\"apple\");",
+							"    pm.expect(responseJson.price).to.eql(3);",
+							"    pm.expect(responseJson.stock).to.eql(100);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://demo1151594.mockable.io/allGrocery/apple",
+					"protocol": "https",
+					"host": [
+						"demo1151594",
+						"mockable",
+						"io"
+					],
+					"path": [
+						"allGrocery",
+						"apple"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add bananas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body Not Null Test\", function () {",
+							"    pm.expect(pm.response.text()).not.equal(null);",
+							"});",
+							"",
+							"pm.test(\"Response Valid and Have a Body\", function () {",
+							"     pm.response.to.be.ok;",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json;",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://demo1151594.mockable.io/add?id=4&name=\"bananas\"&price=2&stock=800",
+					"protocol": "http",
+					"host": [
+						"demo1151594",
+						"mockable",
+						"io"
+					],
+					"path": [
+						"add"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "4"
+						},
+						{
+							"key": "name",
+							"value": "\"bananas\""
+						},
+						{
+							"key": "price",
+							"value": "2"
+						},
+						{
+							"key": "stock",
+							"value": "800"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
